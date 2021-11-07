@@ -1,0 +1,220 @@
+?use master
+if exists(select * from sys.databases where name='bookstore7')
+drop database bookstore7
+create database bookstore7
+go
+use bookstore7
+go
+create table nhaxuatban(
+id int primary key identity(1,1),
+name varchar(20),
+diachi varchar(20)
+)
+go
+create table sach(
+id varchar(20) primary key ,
+name_book varchar(500),
+author nvarchar(250),
+noidung text
+)
+go
+create table loaisach(
+id int primary key identity(1,1),
+name_loaisach varchar(30)
+)
+go
+create table ct_xuatban(
+id int primary key ,
+id_nhaxuatban int references nhaxuatban(id),
+id_sach varchar(20) references sach(id),
+loaisach int references loaisach(id),
+namsanxuat date,
+lanxuatban int,
+price money,
+soluong int
+)
+go
+insert into nhaxuatban
+values('NXB kim dong','ha noi'),
+      ('NXB tre','tp ho chi minh')
+	  
+go
+insert into sach
+values('a001','Tôi tài gi?i b?n cung th?','Adam Khoo','Mít Ð?c, nhân v?t chính trong truy?n, có n?t t?t nhu r?t ham hi?u bi?t, cái gì cung mu?n h?c: h?c nh?c, h?c v?, h?c làm tho, h?c lái ôtô… Nhung ch? vì t?i chú nông n?i, lu?i suy nghi nên h?c cái gì cung ch?ng thành công. Chú cung có n?t x?u là d?i x? không t?t v?i các b?n gái, hay nói khu?ch khoác và thích ch? tay nam ngón hon là b?t tay vào làm vi?c… Trái l?i v?i Mít Ð?c, Bi?t Tu?t là chú tí hon thông minh, hi?u bi?t r?ng, chín ch?n, dúng m?c và M?t xanh là cô tí hon di?m d?m, hoà nhã, có quan h? b?n bè dúng d?n, dã thành th?t giúp d? Mít Ð?c nh?n ra sai l?m tru?c dây c?a chú.'),
+      ('a002','Ð?c nhân tâm', 'Dale Carnegie','Don Quixote là m?t ngu?i luôn luôn “b?c cháy” nhung cung r?t kh? kh?o và hi?n lành, tuy r?t huênh hoang nhung cung d?y lòng xót thuong d?i v?i nh?ng ngu?i b? áp b?c, m?t con ngu?i v?a nghiêm kh?c v?a khoan dung, v?a hiên ngang l?i v?a y?u du?i.'),
+	  ('a003','Nhà gi? kim','Paulo Coelho','Ch?a d?ng trong cu?n sách hay c?a nhà xu?t b?n Kim d?ng là m?t câu chuy?n tình mãnh li?t truy?n c?m h?ng vu?t th?i gian'),
+	  ('a004','B?t tr? d?ng xanh','J.D.Salinger','Cái tên Robin Hood dã tr? nên quá quen thu?c v?i d?c gi? Vi?t Nam. Robin Hood d?i di?n cho chánh nghia, tr? gian di?t b?o. Anh là m?t nhân v?t dân gian n?i ti?ng t? th?i trung c?, cho t?i ngày nay v?n là m?t trong nh?ng nhân v?t tuy?n thuy?t n?i ti?ng thông qua truy?n hình, các b? phim và các tác ph?m van h?c hi?n d?i.'),
+	  ('a005','Dòng Sông Tho ?u','Nguy?n Quang Sáng','B?c tranh quê huong trong ti?u thuy?t Dòng Sông Tho ?u s? di sinh d?ng vì d?u là nh?ng h?i ?c có th?t. Tui theo kháng chi?n 30 nam, m?i khi nghe trên th? gi?i có dòng sông c?n thì tui l?i nghi không bi?t dòng sông bên nhà mình ra sao.'),
+	  ('a006','M?t dêm','Tr?nh Xuân Thu?n','Cu?n sách dua ngu?i d?c khám phá vu tr? v?i ngôn ng? d?y ch?t tho, quy?n ru'),
+	  ('a007',' C? di r?i s? d?n','Minh DeltaViet','Th?i di?m chuy?n t? thi?u niên sang tru?ng thành là lúc ngu?i ta d?t nhi?u câu h?i nh?t cho chính mình và th? gi?i'),
+	  ('a008','Ðông phuong tri?t h?c cuong y?u','Lý Minh Tu?n','V?i con m?t uyên thâm, tác gi? ch? ra nh?ng di?u ki?n co b?n c?n y?u nh?t d? nh?ng ai quan tâm có th? d?t nh?ng bu?c chân d?u tiên vào ngôi d?n d? s? c?a tri?t h?c phuong Ðông.'),
+	  ('a009','Thép dã tôi th? d?y','Pavel Korchagin','câu chuy?n c?a m?t v?n d?ng viên dua xe l? ra dã tr? thành th? s?a ch?a ôtô. Nhung nh? b?, m? và chính b?n thân mình, anh dã tr? thành ngu?i n?i ti?ng th? gi?i m?t cách nhanh chóng và d?y may m?n. Anh ch? khát khao lái xe càng nhanh càng t?t.'),
+	  ('a010','Xin chào tình dã hôm qua','ann lee','Nó nhu m?t li?u vitamin b? du?ng cho nh?ng ngu?i s?p yêu, dang yêu và d?c bi?t dang b?n lòng vì chuy?n tình yêu d? v?; r?ng, hãy trân quý tu?i tr?, yêu gi?n d?, bi?t l?ng nghe và th?t thà v?i c?m xúc c?a mình. Ð? dù tình h?t, nhung d?i mình v?n d?p m?i ngày')
+go
+insert into loaisach
+values ('ky su'),
+       ('truyen ngan'),
+	   ('tieu thuyet')
+	  go 
+select * from sach
+select * from nhaxuatban
+select * from loaisach
+go
+insert into ct_xuatban
+values (1,1,'a001',1,'2005',1,400,200),
+       (2,1,'a002',1,'2008',1,1500,400),
+	   (3,1,'a003',2,'2008',1,200,300),
+	   (4,1,'a004',1,'2003',1,760,1000),
+	   (5,1,'a005',3,'2006',1,800,1000),
+	   (6,2,'a006',2,'1982',1,930,120),
+	   (7,2,'a007',2,'1999',1,1160,700),
+	   (8,2,'a008',1,'2000',1,1500,800),
+	   (9,2,'a009',3,'2010',1,3200,900),
+	   (10,1,'a010',3,'1975',1,5200,900)
+	   go
+
+
+--3 Li?t kê các cu?n sách có nam xu?t b?n t? 2008 d?n nay 
+select * from ct_xuatban where year(namsanxuat) >= 2008 
+go
+--4	   	  	   
+select * from ct_xuatban 
+order by price desc
+go
+--5
+create view tieude
+as
+select s.name_book ,ct.price as gia
+from sach s,ct_xuatban ct
+where s.id = ct.id_sach
+and s.name_book like 'M?t dêm'
+go
+select * from tieude
+go
+
+
+--6
+create view cuonsach_t
+as
+select s.name_book ,ct.price as gia
+from sach s,ct_xuatban ct
+where s.id = ct.id_sach
+and s.name_book like 'T%'
+go
+select * from cuonsach_t
+order by gia desc
+--7
+go
+
+
+
+--9
+create view xbkimdong
+as
+select s.id,s.name_book, nxb.name
+from ct_xuatban ct, sach s,nhaxuatban nxb
+where ct.id_sach = s.id and ct.id_nhaxuatban = nxb.id and nxb.id = 1
+go
+select * from xbkimdong
+go
+
+
+--10
+create view tensach
+as
+select s.name_book as ten, ct.price as gia
+from sach s,ct_xuatban ct 
+where s.id = ct.id_sach 
+group by s.name_book , ct.price
+having ct.price = max(price)
+go
+
+--11. Tìm cu?n sách có s? lu?ng l?n nh?t trong kho
+create view SOLUONG
+as
+select s.name_book as ten, ct.soluong as soluong
+from sach s,ct_xuatban ct 
+where s.id = ct.id_sach 
+group by s.name_book , ct.soluong
+having ct.soluong = max(soluong)
+go
+select *from SOLUONG
+go
+
+
+select * from tensach
+--13
+go
+update ct_xuatban
+set price = price - price * 0.1
+select * from ct_xuatban
+--14
+select nxb.name , sum (ct.soluong) as tong
+from nhaxuatban nxb,ct_xuatban ct
+where nxb.id = ct.id_nhaxuatban
+group by nxb.name
+go
+--15
+select ls.name_loaisach,sum(ct.soluong) as dausach
+from loaisach ls,ct_xuatban ct
+where  ls.id = ct.loaisach
+group by ls.name_loaisach
+go
+--17
+create view info
+as
+select s.id, s.name_book,nxb.name,ct.price
+from sach s,nhaxuatban nxb,ct_xuatban ct
+where s.id = ct.id_sach and nxb.id = ct.id_nhaxuatban
+group by s.name_book,nxb.name,s.id,ct.price
+go
+select * from info
+--18
+go
+create proc sp_them_sach 
+as
+begin  
+insert into sach values ('a011','one piece','oda','hahaaaa'),
+                        ('a012','dragon ball','shiki','hehe')
+end
+go
+ exec sp_them_sach
+ go
+ create proc sp_tim_sach
+ as
+ begin
+ select   id,name_book , author   from sach
+where author = 'ann lee'
+end
+exec sp_tim_sach
+go
+create proc sp_sach_chuyenmuc
+as
+begin
+select ls.id,s.name_book,s.id from loaisach ls , ct_xuatban ct,sach s   
+  where ls.id = ct.loaisach and s.id = ct.id_sach
+  group by ls.id,s.name_book,s.id
+  end
+go
+exec sp_sach_chuyenmuc
+--19
+go
+create view ct
+as 
+select * from ct_xuatban
+go
+if object_id ('not_delete') is not null
+begin
+drop trigger not_delete
+end
+go
+create trigger not_delete on ct_xuatban
+for delete
+as
+begin
+  if (select soluong from ct_xuatban)  > 0
+  begin
+  raiserror ('khong duoc xoa',16,2)
+  end
+  end
+  go
