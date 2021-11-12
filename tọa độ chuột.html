@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JavaScript vents - Mouse Position</title>
+    <link rel="stylesheet" href="css/c06.css" />
+</head>
+<body id="body">
+ <div id="stats">
+     screenX: <input type="text" id="sx" />
+     screenY: <input type="text" id="sy" /><span class="divider"></span>
+     pageX: <input type="text" id="px" />
+     pageY: <input type="text" id="py" /><span class="divider"></span>
+     clientX: <input type="text" id="cx" />
+     clientY: <input type="text" id="cy" />
+ </div>
+<div id="page">
+    <h1>List King</h1>
+    <h2>Buy groceries</h2>
+    <ul>
+        <li><em>fresh</em></li>
+        <li>pine nuts</li>
+        <li>honey</li>
+        <li>balsamic</li>
+        <li>linguine</li>
+        <li>cream</li>
+        <li>quinoa</li>
+        <li>sourdough bread</li>
+        <li>kale</li>
+    </ul>
+
+</div>
+<script src="https://halotravel.vn/wp-content/uploads/2020/07/thach_trangg_101029297_573874646879779_1794923475739360981_n.jpg"></script>
+
+<script>
+    var sx = document.getElementById('sx');
+    var sy = document.getElementById('sy');
+    var px = document.getElementById('px');
+    var py = document.getElementById('py');
+    var cx = document.getElementById('cx');
+    var cy = document.getElementById('cy');
+
+    function  showPosition(envent) {
+        sx.value = envent.screenX;
+        sy.value = envent.screenY;
+        px.value = envent.pageX;
+        py.value = envent.pageY;
+        cx.value = envent.clientX;
+        cy.value = envent.clientY;
+    }
+    var el =document.getElementById('body');
+    el.addEventListener('mousemove', showPosition, false);
+</script>
+</body>
+</html>
