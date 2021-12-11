@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Baithi</title>
+  <link rel="stylesheet" href="css/baithi.css">
+</head>
+
+<body>
+<div id="main">
+  <header>
+    <!-- <h1>Form Validation using HTML,CSS,JS</h1> -->
+  </header>
+  <header>
+    <img  class="logo" src="img/a4.jpg" height="200" width="200">
+
+  </header>
+  <div id="content">
+    <h2>Thông tin</h2>
+    <div id="register-box">
+      <!-- FULLNAME  -->
+      <div id="fullname-input">
+        <input type="text" id="fname" name="fname" placeholder="Họ và tên:" onchange="takeData()">
+
+      </div>
+
+      <!-- EMAIL -->
+      <div class="input" id="email-input">
+        <input type="text" id="email" name="email" placeholder="Gmail" onchange="takeData()">
+      </div>
+
+      <!-- Phone -->
+      <div class="input" id="phone-input">
+        <input type="text" id="Phone" name="Phone" placeholder="Phone" onchange="takeData()">
+      </div>
+
+      <!-- Giới tính -->
+      <div class="input" id="password-input">
+
+        <label>Giới tính</label>
+        <select>
+          <option>Nam</option>
+          <option>Nữ</option>
+          <option>Giới tính khác</option>
+        </select>
+
+      </div>
+
+      <!-- Sở thích -->
+      <div class="input" id="avatar-input">
+
+        <label>Giới tính</label>
+        <select>
+          <option>Thể thao</option>
+          <option>Phim ảnh</option>
+          <option>Đọc sách</option>
+          <option>Âm nhạc</option>
+          <option>Chơi game</option>
+        </select>
+      </div>
+
+      <!-- Giới thiệu bản thân -->
+      <div class="input" id="address-input">
+        <input type="textarea" id="Giới thiệu bản thân" name="Giới thiệu bản thân" placeholder="Giới thiệu bản thân" onchange="takeData()">
+      </div>
+
+
+
+      <!-- SUMMIT RESET  -->
+      <div id="register-box-footer">
+        <button id="Đăng nhập">Đăng nhập</button>
+        <button id="Quay lại">Quay lại</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/baithi.js"></script>
+</body>
+
+</html>
